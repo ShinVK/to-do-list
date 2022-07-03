@@ -1,0 +1,12 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "TO DO List Project - Full Stack",
+  "main": "index.js",
+  "scripts": {
+    "compose:up": "docker-compose up -d --build",
+    "compose:down": "docker-compose down --remov"
+  },
+  "author": "",
+  "license": "ISC"
+}
