@@ -35,7 +35,6 @@ services:
       test: ["CMD", "lsof", "-t", "-i:3001"]
       timeout: 10s
       retries: 5
-
   db:
     image: mysql:8.0.21
     platform: linux/x86_64 
