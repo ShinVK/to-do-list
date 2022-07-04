@@ -1,20 +1,20 @@
 # Código baseado no projeto TFC
 version: '3.9'
 services:
-  frontend-todo:
+  frontend:
     build: ./frontend
     container_name: app_frontend
     ports:
       - 3000:3000
     platform: linux/x86_64
     depends_on:
-      backend-todo:
+      backend:
         condition: service_healthy
     healthcheck:
       test: ["CMD", "lsof", "-t", "-i:3000"]
       timeout: 10s
       retries: 5
-  backend-todo:
+  backend:
     build: ./backend
     container_name: app_backend
     ports:
