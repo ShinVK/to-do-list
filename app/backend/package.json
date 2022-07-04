@@ -5,10 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "/bin/sh tsc_eval.sh",
-    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
-    "prestart": "npm run build && npm run db:reset",
+    "prestart": "npm run build",
     "start": "node .",
-    "predev": "npm run build && npm run db:reset",
+    "predev": "npm run build",
     "dev": "nodemon --watch \"./src/**\" ./src/server.ts",
     "lint": "eslint ./src --ext .ts"
   },
