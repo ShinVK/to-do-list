@@ -1,10 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
+import ErrorBase from '../utils/ErrorBase';
 
-class ErrorBase extends Error {
-  constructor(msg: string, public statusCode: number) {
-    super(msg);
-  }
-}
 
 
 export default function errorMiddleware(
@@ -16,5 +12,6 @@ export default function errorMiddleware(
   if (err instanceof ErrorBase) {
     return res.status(err.statusCode).json({ message: err.message });
   }
+  console.log(err);
   return res.status(500).json({ message: 'erro interno' });
 }
