@@ -7,8 +7,8 @@ import Status from './Status.model';
 class Task extends Model {
   public id!: number;
   public name: string;
-  public statusId: string;
-  public categoryId: string;
+  public statusId: number;
+  public categoryId: number;
   public created: Date;
   public updated: Date;
 }
@@ -26,11 +26,11 @@ Task.init({
     allowNull: false,
   },
   statusId: {
-    type: STRING,
+    type: INTEGER,
     allowNull: false,
   },
   categoryId: {
-    type: STRING,
+    type: INTEGER,
     allowNull: false,
   },
   created: {
@@ -52,6 +52,6 @@ Task.belongsTo(Category, { foreignKey: 'category_id', as: 'categoria'});
 Task.belongsTo(Status, { foreignKey: 'status_id', as: 'status'});
 
 Category.hasMany(Task, { foreignKey: 'category_id', as: 'categoria'});
-Status.hasMany(Task, {})
+Status.hasMany(Task, { foreignKey: 'status_id', as: 'status'})
 
 export default Task;

@@ -2,12 +2,13 @@
   "name": "todolist-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./build/server",
   "scripts": {
     "build": "/bin/sh tsc_eval.sh",
-    "prestart": "npm run build",
+    "prestart": "npm run build && npm run db:reset",
+    "db:reset": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
     "start": "node .",
-    "predev": "npm run build",
+    "predev": "npm run build && npm run db:reset",
     "dev": "nodemon --watch \"./src/**\" ./src/server.ts",
     "lint": "eslint ./src --ext .ts"
   },

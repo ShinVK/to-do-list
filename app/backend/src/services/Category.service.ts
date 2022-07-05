@@ -14,6 +14,12 @@ export default class CategoryService {
     return await Category.findAll();
   }
 
+  public findOneCategory = async (id:string) : Promise<ICategory> => {
+    const result = await Category.findByPk(id);
+    if (!result) throw new ErrorBase('Not found', 404);
+    return result;
+  }
+
   public deleteCategory = async (id: string) : Promise<void> => {
     const result = await Category.findByPk(id);
     if (!result) throw new ErrorBase('Not found', 404);
