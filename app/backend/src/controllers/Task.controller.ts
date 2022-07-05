@@ -61,4 +61,25 @@ export default class TaskController {
       next(e)
     }
   }
+
+  public update  = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { name, statusId, categoryId} = req.body;
+      const { id } = req.params;
+      const result = await this.taskService.updateTask(id, {name, statusId, categoryId});  
+      return res.status(200).json(result);
+    } catch (e){
+      next(e)
+    }
+  }
+
+  public delete  = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { id } = req.params;
+      const result = await this.taskService.deleteTask(id);   
+      return res.status(200).json({message:'task deleted'});
+    } catch (e){
+      next(e)
+    }
+  }
 }

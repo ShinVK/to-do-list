@@ -10,5 +10,7 @@ taskRoutes.get('/category/:id', taskController.getTasksCategory);
 taskRoutes.get('/completed', taskController.taskCompleted);
 taskRoutes.get('/ontrack', taskController.taskOnTrack);
 taskRoutes.get('/pending', taskController.taskPending);
+taskRoutes.put('/:id', taskController.update);
+taskRoutes.delete('/:id', taskController.delete);
 
 export default taskRoutes;

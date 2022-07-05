@@ -95,4 +95,23 @@ export default class TaskService {
     });
     return result;
   }
+
+  public updateTask = async (id: string, newTask: ITask):Promise<ITask | null> => {
+    const result = await Task.findByPk(id);
+    if (!result) throw new ErrorBase('not found', 404);
+    result.name = newTask.name;
+    result.categoryId = newTask.categoryId ? newTask.categoryId : result.categoryId;
+    result.statusId = newTask.statusId ? newTask.statusId : result.statusId;
+    result.updated = new Date();
+
+    await result.save();
+    const resultFinal = await Task.findByPk(id, {include: includesOption});
+    return resultFinal;
+  }
+
+  public deleteTask = async (id:string):Promise<void> => {
+    const result = await Task.findByPk(id);
+    if (!result) throw new ErrorBase('not found', 404);
+    await Task.destroy({where: {id}})
+  }
 }
