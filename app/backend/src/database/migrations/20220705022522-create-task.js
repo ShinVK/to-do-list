@@ -17,13 +17,13 @@ module.exports = {
       category_id: {
         type: Sequelize.INTEGER
       },
-      createdAt: {
+      created: {
+        type: Sequelize.DATE,
         allowNull: false,
-        type: Sequelize.DATE
       },
-      updatedAt: {
+      updated: {
+        type: Sequelize.DATE,
         allowNull: false,
-        type: Sequelize.DATE
       }
     });
   },
