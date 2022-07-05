@@ -2,13 +2,13 @@ import { Model, STRING, INTEGER } from 'sequelize';
 import configDb from '.';
 
 
-  class Category extends Model {
+  class Status extends Model {
     public id!: number;
     public name: string;
   }
 
 
-  Category.init({
+  Status.init({
     id: {
       type: INTEGER,
       allowNull: false,
@@ -22,8 +22,8 @@ import configDb from '.';
   }, {
       underscored: true,
       sequelize: configDb,
-      modelName: 'categories',
+      modelName: 'status',
       timestamps: false,
     },);
 
-export default Category;
+export default Status;
