@@ -32,7 +32,7 @@ import configDb from '.';
   }, {
       underscored: true,
       sequelize: configDb,
-      modelName: 'Users',
+      modelName: 'users',
       timestamps: false,
     },);
 
